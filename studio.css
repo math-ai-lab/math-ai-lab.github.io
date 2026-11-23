@@ -1,1 +1,20 @@
 :root{--ink:#10213d;--teal:#18b9c7;--blue:#2167e8;--violet:#7957e8}body{background:#f8faff;color:var(--ink);font-family:Inter,"Segoe UI",system-ui,sans-serif}header{background:#fff;border-color:#dbe4f2}.brand b{color:var(--violet)}nav a:hover,nav a[aria-current]{color:#174da8}.hero{isolation:isolate;position:relative}.hero:before,.inner:before{content:"";position:absolute;inset:0 calc(-1 * clamp(18px,5vw,76px));z-index:-1;background:linear-gradient(100deg,#f8faffed,#eff6ff5e),url(neural-web.svg) center/cover;pointer-events:none}.inner{position:relative;isolation:isolate}.eyebrow{color:#28558f}.hero h1 i{color:#5042b2}.button{background:linear-gradient(110deg,#1458bc,#5144b3)}.map,.sample{background:linear-gradient(130deg,#0b1f3a,#162f52 68%,#302950);color:#eef6ff;border-radius:18px;box-shadow:0 18px 48px #132c541a}.map small,.sample-top{color:#94eae9}.map svg{background:linear-gradient(145deg,#0e2341,#17375c);border-radius:8px}.map button,.sample button{background:#adf0e9;color:#10213d}.sample{padding:clamp(20px,3vw,42px);max-width:650px}.sample-top{display:flex;justify-content:space-between;gap:12px;font:12px monospace}.sample h3{font-size:32px;margin:20px 0 6px}.sample p{margin:0}.sample svg,.rotation svg{display:block;width:100%;height:140px}.answers{display:flex;gap:10px}.answers button{min-width:48px}.answers button[aria-pressed=true]{background:#d4c9ff}.sample output,.rotation output{display:block;margin-top:12px;min-height:42px}.surface{display:block;width:min(100%,430px);color:#6253c7}.inner .surface{margin:auto}.rotation{padding:24px;background:#ecf3ff;border-radius:12px;max-width:520px}.rotation label{display:grid;gap:12px}.rotation input{accent-color:var(--blue)}.row,.feature,footer{border-color:#d5deec}#research{background:linear-gradient(110deg,#edf4ff,#f9f7ff);border-radius:15px;padding:30px clamp(16px,3vw,36px)}.scene-buildings{fill:#254366;stroke:#446586;stroke-width:.7}.map .route{stroke:#91f5e9;stroke-dasharray:8 3;animation:travel .8s linear 3}.surface:hover{color:var(--blue)}@keyframes travel{to{stroke-dashoffset:-22}}@media(prefers-reduced-motion:reduce){.map .route{animation:none}}
+
+/* Keep the opening experiment compact at desktop and phone widths. */
+.hero{padding:clamp(14px,2vw,28px) 0;gap:clamp(16px,3vw,42px)}
+.hero h1{margin:10px 0;font-size:clamp(36px,4.5vw,65px)}
+.hero .actions{margin-top:15px}
+.hero .map{width:100%;max-width:440px;justify-self:center;padding:14px 18px;border-radius:13px}
+.hero .map h3{font-size:23px;margin:3px 0}
+.hero .map p,.hero .map label,.hero .map output{font-size:14px;line-height:1.35}
+.hero .map label{display:inline-block;margin:5px 8px 0 0}
+.hero .map select{padding:4px 6px;font-size:14px}
+.hero .map svg{height:112px;margin:6px 0}
+.hero .map svg text{font-size:19px}
+.hero .map output{min-height:0;padding-top:6px}
+.hero .commands button{padding:8px 10px}
+.hero:before{background-size:cover,120% 115%;background-position:center,0% 40%;animation:network-drift 9s ease-in-out infinite alternate}
+@keyframes network-drift{to{background-position:center,100% 65%}}
+@media(max-width:800px){.hero{gap:14px}.hero .map{justify-self:start}.hero>div>p{margin:8px 0}}
+@media(pointer:coarse){.hero .commands button,.hero .map select{min-height:44px}}
+@media(prefers-reduced-motion:reduce){.hero:before{animation:none}}
