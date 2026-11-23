@@ -69,4 +69,4 @@ catalog = course_intro
 for subject, entries in course_groups.items():
     items = ''.join(f'<li><a href="{url}">{escape(title)} ↗</a></li>' for title,url in entries)
     catalog += f'<section class="row course-list"><h2>{subject}</h2><ul>{items}</ul></section>'
-page('courses.html','Courses', catalog+'</article><script defer src="course-cube.js"></script>')
+page('courses.html','Courses', catalog+'</article><script defer src="course-cube.js?v=solid"></script>')
