@@ -25,6 +25,11 @@ def page(file,title,body):
     links=['index.html','about.html','artifacts.html','research.html','collaborations.html','learning.html','contact.html']
     nav=''.join(f'<a href="{url}">{label}</a>' for label,url in zip(labels,links))
     nav=nav.replace(f'href="{file}"',f'aria-current="page" href="{file}"')
+    course_link = '<p><a class="button" href="courses.html" style="color:white">Browse courses →</a></p>'
+    if file == 'learning.html':
+        body = body.replace('</h1>', '</h1>'+course_link, 1)
+    if file == 'index.html':
+        body = body.replace('<h3>Mathematics Behind AI</h3>', '<h3>Mathematics Behind AI</h3>'+course_link)
     body=enrich(file,body)
     html=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{escape(title)} | Math &amp; AI Lab</title><meta name="description" content="Explore digital artifacts, graph experiments and learning resources from Math &amp; AI Lab."><link rel="stylesheet" href="site.css"><link rel="stylesheet" href="studio.css?v=compact-1"></head><body><a class="skip" href="#main">Skip to content</a><header><a class="brand" href="index.html"><b>∿</b> Math &amp; AI Lab</a><nav aria-label="Primary">{nav}</nav></header><main id="main">{body}</main><footer id="contact"><span>Mathematics &amp; Artificial Intelligence Lab</span><a href="https://drhirabenish.github.io/contact.html">Contact the founder ↗</a></footer><script defer src="locator.js"></script><script defer src="studio.js"></script></body></html>'''
     (root/file).write_text(html)
@@ -46,3 +51,19 @@ sections={
 'contact':('Contact','For collaboration, artifact feedback, or teaching enquiries, contact Dr. Hira Benish, Founder &amp; Research Director.','Start a conversation','Include the project or resource name and the question you want to explore. For feedback on a digital artifact, include the steps you tried and what you observed.','https://drhirabenish.github.io/contact.html','Open Dr. Hira Benish’s contact page')}
 for slug,(title,intro,heading,detail,url,label) in sections.items():
     page(slug+'.html',title.replace('&amp;','&'),f'<article class="inner"><h1>{title}</h1><p>{intro}</p>'+row('details',heading,f'<p>{detail}</p><a href="{url}">{label} →</a>')+'</article>')
+
+course_groups = {
+    'Mathematics': [
+        ('Multivariable Calculus', 'https://pmaicourses.github.io/Multivariable_Calculus/'),
+        ('Linear Algebra', 'https://pmaicourses.github.io/Linear-Algebra/'),
+        ('Discrete Mathematics (Discrete Structures)', 'https://pmaicourses.github.io/Discrete_Structures/')],
+    'Computing, AI &amp; Data Science': [
+        ('Python Programming', 'https://msohailakhtar.github.io/Python-Programming/'),
+        ('Linear Algebra for Machine Learning', 'https://pmaicourses.github.io/Linear_Algebra_For_ML/'),
+        ('Linear Algebra for Data Science', 'https://pmaicourses.github.io/Linear-Algebra-for-Data-Science/'),
+        ('Discrete Mathematics for AI', 'https://pmaicourses.github.io/Discrete-Mathematics-for-AI/')]}
+catalog = '<article class="inner"><a href="learning.html">← Learning</a><h1>Courses</h1><p>Browse mathematics and computing courses. Each title opens the course materials on the original provider’s website.</p>'
+for subject, entries in course_groups.items():
+    items = ''.join(f'<li><a href="{url}">{escape(title)} ↗</a></li>' for title,url in entries)
+    catalog += f'<section class="row"><h2>{subject}</h2><ul>{items}</ul></section>'
+page('courses.html','Courses', catalog+'</article>')
