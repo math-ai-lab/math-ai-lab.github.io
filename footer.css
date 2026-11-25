@@ -3,3 +3,6 @@ footer.lab-colophon{display:block;max-width:none;margin:clamp(32px,5vw,68px) 0 0
 
 .lab-closing{border-top:1px solid #425068;margin:0;padding:18px 0 24px;color:#bce4de;font:italic clamp(17px,2vw,22px)/1.45 Georgia,serif}
 
+
+.lab-colophon .lab-closing{width:100%;max-width:none;text-wrap:balance}
+@media(min-width:800px){.lab-colophon .lab-closing{white-space:nowrap;font-size:clamp(17px,1.6vw,22px)}}
