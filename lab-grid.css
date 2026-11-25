@@ -1,0 +1,29 @@
+/* Shared background for the artifact gallery and research notes. */
+main:has(.art-page, .research-notes) {
+  position: relative;
+  isolation: isolate;
+  background-color: #f5f9ff;
+}
+main:has(.art-page, .research-notes)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image: repeating-linear-gradient(112deg, transparent 0 43px, #5991bb22 43px 44px), repeating-linear-gradient(0deg, transparent 0 35px, #5991bb22 35px 36px);
+  background-size: auto 36px;
+  animation: lab-grid-drift 12s linear infinite;
+}
+@keyframes lab-grid-drift { to {background-position: 0 36px;} }
+@media (prefers-reduced-motion: reduce) {
+  main:has(.art-page, .research-notes)::before {animation: none;}
+}
+.research-notes {max-width: 54rem; margin: auto; padding: clamp(1.5rem,4vw,3rem) 1.25rem; color: #152d46;}
+.research-notes section {max-width: none; margin: 1.5rem 0; padding: 1.4rem; background: #fbfdff; border: 1px solid #bdceda; border-radius: 16px;}
+.research-notes h1, .research-notes h2 {letter-spacing: normal; text-wrap: balance;}
+.research-notes h1 {font-size: clamp(2rem,4vw,3.5rem);}
+.research-notes h2 {font-size: clamp(1.45rem,2.5vw,2rem);margin: .5rem 0;}
+.research-notes p {max-width: 68ch; line-height: 1.65;}
+.research-notes small {color: #28596a;}
+.research-notes details {padding: .8rem 1rem;background: #eaf4fa;}
+.research-notes summary {cursor: pointer;}
