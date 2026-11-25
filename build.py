@@ -49,7 +49,8 @@ home += '<section id="about" class="build-story"><div><h2>What we build</h2></di
 home += '<div id="latest">'+feed('news','Latest from the lab')+'</div></div>'
 page('index.html','Home',home)
 (root/'site.css').write_text(css)
-page('artifacts.html','Digital Artifacts','<section><h1>Digital Artifacts</h1><p>Explore the lab’s applications, their mathematical foundations, and their development status.</p></section>'+feature()+'<section class="hero"><div><h2>Mathematical workbench</h2><p>Use the same observations to explore classification, connectivity and optimization.</p></div>'+(root/'workbench.html').read_text()+'</section>'+scanner(False)+mapview+feed('artifacts','Artifact index'))
+gallery = (root / 'artifact-gallery.html').read_text()
+page('artifacts.html', 'Digital Artifacts', gallery.replace('<!-- WORKBENCH -->', (root / 'workbench.html').read_text()))
 page('thinkxp.html',name,'<p><a href="artifacts.html">← Digital Artifacts</a></p><span class="eyebrow">Educational technology · In development</span><h1>ThinkXP</h1><p>'+purpose+'</p>'+row('problem','The learning problem','<p>A single score gives learners little sense of the questions they have worked through. ThinkXP brings assessment activities and progress into the same learning experience.</p>')+row('workflow','How it works','<p>Work through a question, submit a response, and continue through the activity. Learner progress provides a record across the experience.</p>')+row('foundations','Educational foundations','<p>Question-based practice gives learners repeated opportunities to retrieve and apply knowledge. An evaluation of ThinkXP’s learning outcomes remains future work.</p>')+row('status','Development &amp; credits','<p>Developed by Dr. Hira Benish. ThinkXP is undergoing deployment preparation. Public access, technical documentation, and release details are pending verification.</p>'))
 sections={
 'research':('Research &amp; exploration','Our current question concerns the reliability of mathematical reasoning in language models.','Ongoing investigation','Can a model recognize that distinguishing adjacent vertices need not distinguish every pair? The proposed evaluation compares direct reasoning with counterexample prompting. Published work in graph theory is catalogued on the founder’s research page.','https://drhirabenish.github.io/research.html','Published research by the founder'),
@@ -78,7 +79,7 @@ for subject, entries in course_groups.items():
     items = ''.join(f'<li><a href="{url}">{escape(title)} ↗</a></li>' for title,url in entries)
     catalog += f'<section class="row course-list"><h2>{subject}</h2><ul>{items}</ul></section>'
 catalog += '<section><h2>Mathematics Behind AI</h2><p>Explore rotations, coordinates and graph-based reasoning.</p>'+learning()+'<a href="artifacts.html#incident">Try the sensor experiment</a> · <a href="blogs.html">Read What Does GPT Actually Learn?</a></section>'
-page('courses.html','Courses', catalog+'</article><script defer src="course-cube.js?v=solid"></script>')
+page('courses.html','Courses', catalog+(root/'cycle-practice.html').read_text()+'</article><script defer src="course-cube.js?v=solid"></script>')
 
 
 page('youtube.html','YouTube','<article class="inner"><h1>Mathematics Behind AI</h1><p>Watch Dr. Hira Benish’s lessons and Shorts.</p><a href="https://www.youtube.com/@DrHiraBenish">Visit the YouTube channel ↗</a>'+feed('videos','Latest three uploads')+'</article>')
