@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="lab-grid.css">
+<article class="research-notes">
+  <h1>Research</h1>
+  <p>How much can we learn about a network from a handful of distances? This question connects the lab’s work in graph theory with its investigation of mathematical reasoning in AI.</p>
+  <section id="investigation">
+    <small>Ongoing investigation</small>
+    <h2>When does a language model mistake local evidence for a global proof?</h2>
+    <p>Two neighboring stations can have different distances from a sensor even when two distant stations give identical readings. We are studying whether language models recognize this distinction.</p>
+    <details><summary>Explore a three-station counterexample</summary><p>Take the path A–B–C and place one sensor at B. The readings are A = 1, B = 0, C = 1. Every neighboring pair has different readings, yet A and C are indistinguishable. The sensor resolves adjacent pairs only.</p></details>
+    <p>The planned evaluation compares direct answers with answers prompted to look for a counterexample. It also tests valid claims and repeats questions with renamed vertices.</p>
+    <a href="artifacts.html#incident">Experiment with sensor placement →</a>
+  </section>
+  <section id="publications">
+    <small>Selected publication by the founder and coauthors</small>
+    <h2>The Fractional Local Metric Dimension of Graphs</h2>
+    <p>Imran Javaid, Hira Benish and Muhammad Murtaza · <em>Contributions to Discrete Mathematics</em>, 19(3), 163–177.</p>
+    <p>How much total weight must be placed on vertices to distinguish the ends of every edge? The paper studies this fractional version of local metric dimension.</p>
+    <a href="https://doi.org/10.55016/ojs/cdm.v19i3.62807">Original journal article ↗</a>
+  </section>
+  <section id="directions">
+    <small>Proposed direction</small>
+    <h2>Distance information in graph learning</h2>
+    <p>When do distances to selected landmarks help a graph learning model distinguish vertices? We aim to identify examples where these features help and examples where they lose information.</p>
+  </section>
+</article>
