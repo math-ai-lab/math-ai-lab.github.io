@@ -1,5 +1,9 @@
 # Math & AI Lab
 Open index.html locally or serve the repository root with python -m http.server.
+## Digital Artifacts
+
+Edit `artifact-gallery.html` for directory links, introductions, and incident options. The build inserts `workbench.html` at the WORKBENCH comment. Edit `artifacts.css` for layout and `transit-investigation.js` for station readings and dispatch. The Learning page uses `cycle-practice.html`.
+
 ## Editing
 
 Edit `footer.html` to change the shared quotation, collaboration invitation, or footer links. Edit `footer.css` for their layout and colors. Run `python build.py` and review the generated pages before publishing.
