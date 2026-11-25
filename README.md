@@ -1,6 +1,9 @@
 # Math & AI Lab
 Open index.html locally or serve the repository root with python -m http.server.
 ## Editing
+
+Edit `footer.html` to change the shared quotation, collaboration invitation, or footer links. Edit `footer.css` for their layout and colors. Run `python build.py` and review the generated pages before publishing.
+
 Edit build.py for content, templates and styles. Edit locator.js for the simulation. Run python build.py and review the rendered HTML and assets before committing. All public pages are static. No build dependencies, analytics, API tokens or private ThinkXP files are required.
 ## Publishing
 Create the repository in the founder-controlled organization. Push this folder to main. For GitHub Pages on GitHub Free use a public repository. In Settings → Pages select Deploy from a branch, main, /(root). To host on Cloudflare Pages instead, connect only this repository, select main, no framework, no build command and the repository root as output. Use the supplied free subdomain. Verify all eight page routes and the locator after deployment.
