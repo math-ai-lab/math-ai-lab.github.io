@@ -56,16 +56,7 @@ sections={
 'collaborations':('Collaborations','Mathematicians, developers, educators, and students can propose a joint project or contribute to an existing investigation.','Propose a contribution','Describe the question, the artifact or experiment you would like to produce, and the role you can take. Credit is documented by project and contribution.','contact.html','Discuss a project'),
 'learning':('Learning &amp; resources','Mathematics Behind AI connects classroom mathematics to computational examples.','Try graph-based reasoning','Use the Digital Artifacts fault locator to compare one sensor with two. Before connecting sensor E, predict which pairs of stations the control room can distinguish. Explore teaching resources through the founder’s academic site.','https://drhirabenish.github.io/teaching.html','Explore teaching resources'),
 'contact':('Contact','For collaboration, artifact feedback, or teaching enquiries, contact Dr. Hira Benish, Founder &amp; Research Director.','Start a conversation','Include the project or resource name and the question you want to explore. For feedback on a digital artifact, include the steps you tried and what you observed.','https://drhirabenish.github.io/contact.html','Open Dr. Hira Benish’s contact page')}
-page('about.html','About the lab',"""<style>
-main:has(.lab-about){background-color:#f7faff;background-image:linear-gradient(90deg,#52749b15 1px,transparent 1px),linear-gradient(#52749b15 1px,transparent 1px);background-size:36px 36px;animation:about-grid 12s linear infinite}
-@keyframes about-grid{to{background-position:36px 36px}}
-.lab-about{max-width:52rem;margin:auto;padding:clamp(2rem,5vw,4rem) 1.5rem;color:#142b43}
-.lab-about h1{font:normal clamp(2rem,4vw,3rem)/1.12 Georgia,serif;margin:0 0 1rem}
-.lab-about section{display:grid;grid-template-columns:minmax(7rem,1fr) 3fr;gap:1rem;border-top:1px solid #adbfce;margin:1.5rem 0 0;padding:1.25rem 0 0;max-width:none}
-.lab-about h2{margin:0;font:normal 1.55rem/1.35 Georgia,serif}.lab-about p{margin:0;max-width:66ch;line-height:1.65}
-@media(max-width:540px){.lab-about section{grid-template-columns:1fr;gap:.4rem}}
-@media(prefers-reduced-motion:reduce){main:has(.lab-about){animation:none}}
-</style><article class="lab-about"><h1>About the lab</h1><p>Math &amp; AI Lab is an independent research and innovation initiative founded by <a href="https://drhirabenish.github.io/">Dr. Hira Benish</a>, a mathematician specializing in graph theory.</p><section><h2>Our vision</h2><p>We want students, educators, and researchers to understand the mathematics behind intelligent systems well enough to question how they work and imagine what they could do differently.</p></section><section><h2>Our mission</h2><p>We turn mathematical questions into experiments people can run. Through interactive tools, research prototypes, and visual lessons, we connect graph theory and data science with the practice of building and testing AI.</p></section></article>""")
+page('about.html','About the lab','<link rel="stylesheet" href="about.css">' + (root / 'about-content.html').read_text())
 for slug,(title,intro,heading,detail,url,label) in sections.items():
     page(slug+'.html',title.replace('&amp;','&'),f'<article class="inner"><h1>{title}</h1><p>{intro}</p>'+row('details',heading,f'<p>{detail}</p><a href="{url}">{label} →</a>')+'</article>')
 
