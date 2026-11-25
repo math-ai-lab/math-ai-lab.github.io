@@ -22,8 +22,7 @@ def row(id,title,body):
 def feature():
     return f'<section class="feature"><div class="poster" aria-hidden="true">ThinkXP</div><div><span class="eyebrow">Featured digital artifact · In development</span><h2>{name}</h2><p>{purpose}</p><a href="thinkxp.html">Explore ThinkXP →</a></div></section>'
 def feed(mode, heading):
-    extra = '<a href="blogs.html">What Does GPT Actually Learn?</a><a href="youtube.html">YouTube →</a>' if mode=='news' else ''
-    return f'<section class="lab-feed" data-feed="{mode}"><h2>{heading}</h2><div class="feed-rail" tabindex="0" aria-label="{heading}"></div>{extra}</section>'
+    return f'<section class="lab-feed" data-feed="{mode}"><h2>{heading}</h2><div class="feed-rail" tabindex="0" aria-label="{heading}"></div></section>'
 
 def page(file,title,body):
     labels=['Home','About','Digital Artifacts','Research','Collaborations','Learning','YouTube','Contact']
@@ -33,31 +32,22 @@ def page(file,title,body):
     course_link = '<p><a class="button" href="courses.html" style="color:white">Browse courses →</a></p>'
     if file == 'learning.html':
         body = body.replace('</h1>', '</h1>'+course_link, 1)
-    if file == 'index.html':
-        body = body.replace('<h3>Mathematics Behind AI</h3>', '<h3>Mathematics Behind AI</h3>'+course_link)
     body=enrich(file,body)
-    html=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{escape(title)} | Math &amp; AI Lab</title><meta name="description" content="Explore digital artifacts, graph experiments and learning resources from Math &amp; AI Lab."><link rel="stylesheet" href="site.css"><link rel="stylesheet" href="studio.css?v=compact-1"><link rel="stylesheet" href="news.css?v=motion2"><link rel="stylesheet" href="cinema.css?v=thread1"></head><body><a class="skip" href="#main">Skip to content</a><header><a class="brand" href="index.html"><svg aria-hidden="true" focusable="false" width="32" height="34" viewBox="0 0 32 34" style="vertical-align:middle;margin-right:3px"><path fill="#27b8be" d="M16 1 30 9 16 17 2 9Z"/><path fill="#235dc0" d="M2 9 16 17V33L2 25Z"/><path fill="#6951c8" d="M16 17 30 9V25L16 33Z"/></svg> Math &amp; AI Lab</a><nav aria-label="Primary">{nav}</nav></header><main id="main">{body}</main><footer class="lab-end" id="contact"><div><h2>What problem would you like to explore with us?</h2><a href="collaborations.html">Collaborate with the lab</a><p>Mathematics &amp; Artificial Intelligence Lab</p><a href="https://drhirabenish.github.io/contact.html">Contact the founder ↗</a></div></footer><script defer src="locator.js"></script><script defer src="studio.js"></script><script defer src="lab-feed.js"></script></body></html>'''
+    html=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{escape(title)} | Math &amp; AI Lab</title><meta name="description" content="Explore digital artifacts, graph experiments and learning resources from Math &amp; AI Lab."><link rel="stylesheet" href="site.css"><link rel="stylesheet" href="studio.css?v=compact-1"><link rel="stylesheet" href="news.css?v=motion2"><link rel="stylesheet" href="cinema.css?v=overview"></head><body><a class="skip" href="#main">Skip to content</a><header><a class="brand" href="index.html"><svg aria-hidden="true" focusable="false" width="32" height="34" viewBox="0 0 32 34" style="vertical-align:middle;margin-right:3px"><path fill="#27b8be" d="M16 1 30 9 16 17 2 9Z"/><path fill="#235dc0" d="M2 9 16 17V33L2 25Z"/><path fill="#6951c8" d="M16 17 30 9V25L16 33Z"/></svg> Math &amp; AI Lab</a><nav aria-label="Primary">{nav}</nav></header><main id="main">{body}</main><footer class="lab-end" id="contact"><div><h2>What problem would you like to explore with us?</h2><a href="collaborations.html">Collaborate with the lab</a><p>Mathematics &amp; Artificial Intelligence Lab</p><a href="https://drhirabenish.github.io/contact.html">Contact the founder ↗</a></div></footer><script defer src="locator.js"></script><script defer src="studio.js"></script><script defer src="lab-feed.js?v=overview"></script></body></html>'''
+    if file == "index.html":
+        html = html.replace('href="https://drhirabenish.github.io/contact.html">Contact the founder ↗', 'href="contact.html">Contact the lab')
     (root/file).write_text(html)
-home=(root/'cinema.html').read_text()+'<script defer src="cinema.js?v=thread1"></script>'+'<div class="lab-trail">'+feature()
-build_items = [
-    ('about.html', 'About', 'Meet the founder and explore how the independent lab turns mathematical questions into experiments.'),
-    ('artifacts.html', 'Digital artifacts', 'Explore interactive simulations and ThinkXP, our learning and assessment prototype in development.'),
-    ('research.html', 'Research', 'Follow investigations into graph structure and the reliability of mathematical reasoning in AI.'),
-    ('collaborations.html', 'Collaborations', 'Propose a joint experiment, contribute code, or help evaluate a learning tool.'),
-    ('courses.html', 'Learning', 'Study mathematics and computing through courses, Python examples, and interactive modules.'),
-    ('blogs.html', 'Lab writing', 'Read how a model learns its parameters and test a prediction for yourself.'),
-    ('youtube.html', 'YouTube', 'Watch the latest visual lessons from Mathematics Behind AI.'),
-    ('#latest', 'Latest from the lab', 'Find newly published articles, artifact updates, and channel videos in one feed.'),
-    ('contact.html', 'Contact', 'Send a project question, collaboration enquiry, or feedback to the lab.')
+home = (root/'cinema.html').read_text() + '<script defer src="cinema.js?v=overview"></script><div class="lab-trail">'
+outputs = [
+    ('artifacts.html#incident', 'Interactive experiments', 'Use sensor distances to locate a fault on a five-station network.', 'Try the experiment'),
+    ('thinkxp.html', 'Learning applications', 'ThinkXP is our learning and assessment prototype, currently in development.', 'View ThinkXP development details'),
+    ('research.html', 'Computational research', 'We investigate when language models mistake local graph evidence for a global conclusion.', 'Explore the investigation'),
+    ('courses.html', 'Courses &amp; explainers', 'Study linear algebra, discrete mathematics, and computing through lessons and interactive examples.', 'Browse courses'),
 ]
-build_list = ''.join(f'<li><a href="{url}">{title}</a><span>{description}</span></li>' for url,title,description in build_items)
-home += '<section id="about" class="build-story"><div><h2>What we build</h2><p>Our work connects mathematical research, working software, and resources for learning.</p><p>Future directions include analytics dashboards, AI-powered learning tools, and computational research prototypes.</p><button type="button" class="trail-toggle" aria-pressed="false">Pause page motion</button></div><ul>'+build_list+'</ul></section>'
-home += '<div id="latest">'+feed('news','Latest from the lab')+'</div>'
-home+=row('research','Research &amp; exploration','<span class="eyebrow">Ongoing research question</span><h3>When does local evidence justify a global conclusion?</h3><p>We are investigating whether language models confuse distinguishing adjacent vertices with distinguishing every vertex in a graph.</p><a href="research.html">Research and publications ↗</a>')
-home+=row('collaborations','Collaborations','<p>Research and project enquiries are welcome from mathematicians, developers, educators, and students interested in testing a model, designing an experiment, or evaluating a learning tool.</p><a href="contact.html">Contact the founder →</a>')
-home+=row('learning','Learning &amp; resources','<h3>Mathematics Behind AI</h3><p>Explore the founder’s teaching work connecting mathematics, Python, and machine learning.</p><a href="blogs.html">Read What Does GPT Actually Learn?</a>')
-
-page('index.html','Home',home+'</div>')
+items = ''.join(f'<li><h3>{title}</h3><span>{intro}</span><a href="{url}">{action}</a></li>' for url,title,intro,action in outputs)
+home += '<section id="about" class="build-story"><div><h2>What we build</h2></div><ul>'+items+'</ul></section>'
+home += '<div id="latest">'+feed('news','Latest from the lab')+'</div></div>'
+page('index.html','Home',home)
 (root/'site.css').write_text(css)
 page('artifacts.html','Digital Artifacts','<section><h1>Digital Artifacts</h1><p>Explore the lab’s applications, their mathematical foundations, and their development status.</p></section>'+feature()+'<section class="hero"><div><h2>Mathematical workbench</h2><p>Use the same observations to explore classification, connectivity and optimization.</p></div>'+(root/'workbench.html').read_text()+'</section>'+scanner(False)+mapview+feed('artifacts','Artifact index'))
 page('thinkxp.html',name,'<p><a href="artifacts.html">← Digital Artifacts</a></p><span class="eyebrow">Educational technology · In development</span><h1>ThinkXP</h1><p>'+purpose+'</p>'+row('problem','The learning problem','<p>A single score gives learners little sense of the questions they have worked through. ThinkXP brings assessment activities and progress into the same learning experience.</p>')+row('workflow','How it works','<p>Work through a question, submit a response, and continue through the activity. Learner progress provides a record across the experience.</p>')+row('foundations','Educational foundations','<p>Question-based practice gives learners repeated opportunities to retrieve and apply knowledge. An evaluation of ThinkXP’s learning outcomes remains future work.</p>')+row('status','Development &amp; credits','<p>Developed by Dr. Hira Benish. ThinkXP is undergoing deployment preparation. Public access, technical documentation, and release details are pending verification.</p>'))
@@ -94,4 +84,3 @@ page('courses.html','Courses', catalog+'</article><script defer src="course-cube
 page('youtube.html','YouTube','<article class="inner"><h1>Mathematics Behind AI</h1><p>Watch Dr. Hira Benish’s lessons and Shorts.</p><a href="https://www.youtube.com/@DrHiraBenish">Visit the YouTube channel ↗</a>'+feed('videos','Latest three uploads')+'</article>')
 page('blogs.html','What Does GPT Actually Learn?',(root/'reader.html').read_text())
 (root/'learning.html').write_text((root/'courses.html').read_text())
-

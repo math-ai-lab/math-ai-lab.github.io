@@ -14,7 +14,8 @@
     const artifacts=catalog.artifacts.map(v=>({...v,type:'Artifact'}));
     const blogs=catalog.blogs.map(v=>({...v,type:'Blog'}));
     const list=mode==='videos'?media:mode==='blogs'?blogs:mode==='artifacts'?artifacts:[...artifacts,...blogs,...media];
-    const cards=list.filter(v=>safe(v.url)&&Date.parse(v.date)<=Date.now()).sort((a,b)=>Date.parse(b.date)-Date.parse(a.date)).slice(0,mode==='news'?3:mode==='videos'?3:Infinity);
+    const featured=new Set(mode==='news' ? Array.from(document.querySelectorAll('.build-story a'), a=>a.href) : []);
+    const cards=list.filter(v=>!featured.has(safe(v.url))).filter(v=>safe(v.url)&&Date.parse(v.date)<=Date.now()).sort((a,b)=>Date.parse(b.date)-Date.parse(a.date)).slice(0,mode==='news'?3:mode==='videos'?3:Infinity);
     const rail=host.querySelector('.feed-rail');rail.replaceChildren();
     for(const v of cards){
       const card=document.createElement('a');card.className='feed-card';card.href=safe(v.url);

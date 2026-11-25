@@ -75,7 +75,7 @@
     card=Math.min(650,w*.87,h*540/260*.95);span=card+Math.min(48,w*.05);paint();
   }
   function tick(now){if(last)offset+=Math.min(50,now-last)/10500;last=now;paint();frame=requestAnimationFrame(tick)}
-  function sync(){cancelAnimationFrame(frame);last=0;document.querySelector('#play').textContent=playing?'Pause':'Play';if(playing&&visible&&!document.hidden)frame=requestAnimationFrame(tick)}
+  function sync(){cancelAnimationFrame(frame);last=0;document.querySelector('#play').textContent=playing?'Pause motion':'Play motion';document.body.classList.toggle('trail-paused',!playing);if(playing&&visible&&!document.hidden)frame=requestAnimationFrame(tick)}
   function step(d){playing=false;sync();offset=Math.round(offset)+d;paint()}
   document.querySelector('#back').onclick=()=>step(-1);document.querySelector('#next').onclick=()=>step(1);
   document.querySelector('#play').onclick=()=>{playing=!playing;sync()};
@@ -87,36 +87,18 @@
   new ResizeObserver(resize).observe(canvas);new IntersectionObserver(([e])=>{visible=e.isIntersecting;sync()}).observe(canvas);resize();sync();
 })();
 
-// Keep the travelling highlight near the reader's position, including while
-// they pause to read a section. Stop drawing outside the editorial sequence.
-(() => {
-  const trail = document.querySelector('.lab-trail');
-  if (!trail) return;
-  const toggle = trail.querySelector('.trail-toggle');
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  let paused = false, visible = false, frame = 0, previous = 0, phase = 0;
-  function draw(now) {
-    const bounds = trail.getBoundingClientRect();
-    if (previous) phase += Math.min(60, now - previous) / 3400;
-    previous = now;
-    const y = Math.max(0, Math.min(bounds.height - 90,
-      innerHeight * .42 - bounds.top + 95 * Math.sin(phase)));
-    trail.style.setProperty('--travel', y + 'px');
-    frame = requestAnimationFrame(draw);
+
+const story=document.querySelector('.build-story');
+const trail=document.querySelector('.lab-trail');
+if(story && trail){
+  new IntersectionObserver((entries,observer)=>{
+    if(entries[0].isIntersecting){story.classList.add('entered');observer.disconnect()}
+  }).observe(story);
+  function followScroll(){
+    const bounds=trail.getBoundingClientRect();
+    trail.style.setProperty('--travel', Math.max(0,Math.min(bounds.height-90,innerHeight*.42-bounds.top))+'px');
   }
-  function sync() {
-    cancelAnimationFrame(frame);
-    previous = 0;
-    if (visible && !document.hidden && !paused && !reduced.matches) frame = requestAnimationFrame(draw);
-  }
-  toggle.onclick = () => {
-    paused = !paused;
-    document.body.classList.toggle('trail-paused', paused);
-    toggle.textContent = paused ? 'Resume page motion' : 'Pause page motion';
-    toggle.setAttribute('aria-pressed', String(paused));
-    sync();
-  };
-  new IntersectionObserver(([entry]) => {visible=entry.isIntersecting;sync()}).observe(trail);
-  document.addEventListener('visibilitychange', sync);
-  reduced.addEventListener('change', sync);
-})();
+  addEventListener('scroll',followScroll,{passive:true});
+  addEventListener('resize',followScroll);
+  followScroll();
+}
