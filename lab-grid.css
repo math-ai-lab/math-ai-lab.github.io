@@ -92,3 +92,31 @@ main:has(.art-page, .research-notes)::before {
     }
   }
 }
+
+/* Moving contour fields for the research notebook. */
+main:has(.research-notes) {
+  overflow: clip;
+  background: linear-gradient(145deg, #e2f7f5, #f4f5ff 52%, #e8e2fb);
+}
+main:has(.research-notes)::before {
+  inset: -64px;
+  background-image:
+    repeating-radial-gradient(ellipse at 12% 42%, transparent 0 17px, #159f9b45 18px 19px, transparent 20px 32px),
+    radial-gradient(ellipse at 18% 45%, #56d9c985, transparent 50%),
+    radial-gradient(ellipse at 85% 65%, #9681e780, transparent 55%);
+  background-size: 100% 480px, 100% 680px, 100% 800px;
+  animation: research-contours 9s ease-in-out infinite alternate;
+}
+@keyframes research-contours {
+  from { transform: translate(-24px,-18px) rotate(-1deg); }
+  to { transform: translate(24px,18px) rotate(1deg); }
+}
+.research-notes > section { border-top: 3px solid #368b97; }
+.research-notes > #featured-projects {
+  background: linear-gradient(130deg,#dff5ef,#f3efff);
+  border-top-color: #7555bd;
+}
+.research-notes > #publications { border-top-color: #506da9; }
+@media (prefers-reduced-motion: reduce) {
+  main:has(.research-notes)::before { animation: none; }
+}
