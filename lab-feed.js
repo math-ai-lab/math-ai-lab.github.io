@@ -25,9 +25,9 @@
       const title=document.createElement('strong');title.textContent=v.title;
       card.append(meta,title);
       if(v.summary && (mode==='projects'||mode==='blogs')){const p=document.createElement('p');p.textContent=v.summary;card.append(p)}
-      if (mode === 'projects') {
+      if (mode === 'projects' || mode === 'blogs') {
         const action = document.createElement('span');
-        action.textContent = 'Open case study ↗';
+        action.textContent = mode === 'blogs' ? 'Read article →' : 'Open case study ↗';
         card.append(action);
       }
       rail.append(card);

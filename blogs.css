@@ -1,0 +1,24 @@
+/* Warm dotted paper distinguishes the essay collection. */
+main.blog-page:has(.research-notes) { overflow: clip; background: linear-gradient(115deg,#fbecdf,#fff9f2 52%,#f0e5f1); }
+main.blog-page:has(.research-notes)::before {
+  inset: -32px; background-image: radial-gradient(circle,#88547850 1.4px,transparent 1.8px);
+  background-size: 24px 24px; animation: blog-paper 7s linear infinite;
+}
+@keyframes blog-paper { to { transform: translate(24px,24px); } }
+.blog-page .research-notes { max-width: 64rem; }
+.blog-page .lab-feed { background: #fffaf5; border-color: #dfcbd7; border-top-color: #92526d; }
+.blog-page .feed-rail { grid-auto-flow: row; grid-template-columns: minmax(0,1fr); overflow: visible; padding: .4rem 0; }
+.blog-page .feed-card { display: grid; grid-template-columns: 40% 1fr; padding: 0; gap: .55rem 0; border: 1px solid #dfcbd7; color: #302440; }
+.blog-page .feed-card :is(img,.feed-art) { grid-column: 1; grid-row: 1 / 5; height: 100%; object-fit: contain; background-color: #382745; }
+.blog-page .feed-card :is(small,strong,p,span) { grid-column: 2; margin: 0; padding-inline: clamp(16px,3vw,32px); }
+.blog-page .feed-card small { padding-top: 1.4rem; color: #79536b; }
+.blog-page .feed-card strong { font: 600 clamp(1.35rem,2.8vw,2rem)/1.15 Georgia,serif; }
+.blog-page .feed-card p { line-height: 1.55; font-size: 1rem; }
+.blog-page .feed-card span { padding-bottom: 1.4rem; color: #823b58; font-weight: 650; }
+.blog-page .feed-card:focus-visible { outline: 3px solid #893e65; outline-offset: 3px; }
+@media(max-width:640px) {
+  .blog-page .feed-card { grid-template-columns: minmax(0,1fr); }
+  .blog-page .feed-card :is(img,.feed-art) { grid-row: auto; aspect-ratio: 420/260; }
+  .blog-page .feed-card :is(small,strong,p,span) { grid-column: 1; }
+}
+@media(prefers-reduced-motion:reduce) { main.blog-page:has(.research-notes)::before { animation: none; } }

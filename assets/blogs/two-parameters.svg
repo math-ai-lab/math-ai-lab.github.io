@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260">
+<defs><linearGradient id="paper" x2="1" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#30234d"/><stop offset="1" stop-color="#553454"/></linearGradient><pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#ffffff" opacity=".2"/></pattern></defs>
+<rect width="420" height="260" fill="url(#paper)"/><rect width="420" height="260" fill="url(#dots)"/>
+<g font-family="system-ui,sans-serif" fill="#fff3df"><text x="32" y="43" font-size="23">Learning a line</text><text x="32" y="68" font-size="14">Five examples · two parameters</text></g>
+<path d="M54 90v136h320" fill="none" stroke="#cbbed3"/><path d="M54 211L342 99" fill="none" stroke="#ffbe7c" stroke-width="3"/>
+<g fill="#ffeed2" stroke="#6d405c" stroke-width="2"><circle cx="54" cy="211" r="6"/><circle cx="126" cy="183" r="6"/><circle cx="198" cy="155" r="6"/><circle cx="270" cy="127" r="6"/><circle cx="342" cy="99" r="6"/></g><text x="252" y="183" font-family="Georgia,serif" fill="#ffe0b5" font-size="19">y = 2x + 1</text></svg>

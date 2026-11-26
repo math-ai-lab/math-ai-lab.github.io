@@ -10,9 +10,10 @@
   "blogs": [
     {
       "title": "What Does GPT Actually Learn?",
-      "summary": "Dr. Hira Benish explores how models learn numerical transformations.",
+      "summary": "Start with five points and two parameters. Adjust a weight, watch the prediction change, and see how the idea scales to a language model.",
       "url": "what-does-gpt-learn.html",
-      "date": "2026-11-24"
+      "date": "2026-11-24",
+      "thumbnail": "assets/blogs/two-parameters.svg"
     }
   ],
   "projects": [
