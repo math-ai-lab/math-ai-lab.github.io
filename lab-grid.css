@@ -30,25 +30,41 @@ main:has(.art-page, .research-notes)::before {
 
 .faculty-directory {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
   gap: 1rem;
 }
 .faculty-card {
-  padding: 1.2rem;
-  border: 1px solid #cadbe7;
-  border-top: 3px solid #437e91;
-  border-radius: 12px;
+  display: grid;
+  grid-template-columns: clamp(4rem, 14vw, 7rem) minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
+  align-content: center;
+  column-gap: clamp(.75rem, 3vw, 1.6rem);
+  row-gap: .25rem;
+  padding: clamp(.8rem, 2vw, 1.25rem);
+  border: 1px solid #c1d2e0;
+  border-left: 3px solid #39838c;
+  border-radius: 8px;
   background: #fff;
+  text-align: left;
 }
-.faculty-portrait {
-  display: block;
-  width: 116px;
-  height: 136px;
+.faculty-card .faculty-portrait {
+  grid-column: 1;
+  grid-row: 1 / 4;
+  align-self: center;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center 25%;
-  border-radius: 10px;
-  background: #dceef1;
+  border-radius: 5px;
 }
-.faculty-card h3 { margin: .8rem 0 .3rem; letter-spacing: normal; }
-.faculty-card p { margin: .5rem 0 0; }
-.faculty-role { color: #28596a; font-weight: 600; }
+.faculty-card h3, .faculty-card p {
+  grid-column: 2;
+  margin: 0;
+  text-align: left;
+}
+.faculty-card h3 {
+  align-self: end;
+  font: 600 clamp(1.05rem, 2.5vw, 1.4rem)/1.25 Georgia, serif;
+  letter-spacing: normal;
+}
+.faculty-card .faculty-role {color: #28596a; font-weight: 600;}
