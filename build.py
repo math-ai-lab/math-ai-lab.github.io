@@ -25,8 +25,8 @@ def feed(mode, heading):
     return f'<section class="lab-feed" data-feed="{mode}"><h2>{heading}</h2><div class="feed-rail" tabindex="0" aria-label="{heading}"></div></section>'
 
 def page(file,title,body):
-    labels=['Home','About','Digital Artifacts','Research','Collaborations','Learning','YouTube','Contact']
-    links=['index.html','about.html','artifacts.html','research.html','collaborations.html','courses.html','youtube.html','contact.html']
+    labels=['Home','About','Digital Artifacts','Research','Collaborations','Learning','Blogs','YouTube','Contact']
+    links=['index.html','about.html','artifacts.html','research.html','collaborations.html','courses.html','blogs.html','youtube.html','contact.html']
     nav=''.join(f'<a href="{url}">{label}</a>' for label,url in zip(labels,links))
     nav=nav.replace(f'href="{file}"',f'aria-current="page" href="{file}"')
     course_link = '<p><a class="button" href="courses.html" style="color:white">Browse courses →</a></p>'
@@ -69,6 +69,7 @@ catalog = catalog.replace('<!-- ROTATION -->', learning())
 page('courses.html', 'Courses & Learning', catalog)
 
 page('youtube.html','YouTube','<article class="inner"><h1>Mathematics Behind AI</h1><p>Watch Dr. Hira Benish’s lessons and Shorts.</p><a href="https://www.youtube.com/@DrHiraBenish">Visit the YouTube channel ↗</a>'+feed('videos','Latest three uploads')+'</article>')
-page('blogs.html','What Does GPT Actually Learn?',(root/'reader.html').read_text())
+page('blogs.html','Blogs',(root/'blogs-index.html').read_text())
+page('what-does-gpt-learn.html','What Does GPT Actually Learn?',(root/'reader.html').read_text())
 (root/'learning.html').write_text((root/'courses.html').read_text())
 

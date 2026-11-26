@@ -13,16 +13,19 @@
     const media=videos.map(v=>({...v,type:'Video',url:'https://www.youtube.com/watch?v='+v.id}));
     const artifacts=catalog.artifacts.map(v=>({...v,type:'Artifact'}));
     const blogs=catalog.blogs.map(v=>({...v,type:'Blog'}));
-    const list=mode==='videos'?media:mode==='blogs'?blogs:mode==='artifacts'?artifacts:[...artifacts,...blogs,...media];
+    const projects=(catalog.projects||[]).map(v=>({...v,type:'Project'}));
+    const list=mode==='projects'?projects:mode==='videos'?media:mode==='blogs'?blogs:mode==='artifacts'?artifacts:[...projects,...artifacts,...blogs,...media];
     const cards=list.filter(v=>safe(v.url)&&Date.parse(v.date)<=Date.now()).sort((a,b)=>Date.parse(b.date)-Date.parse(a.date)).slice(0,mode==='news'?3:mode==='videos'?3:Infinity);
     const rail=host.querySelector('.feed-rail');rail.replaceChildren();
     for(const v of cards){
       const card=document.createElement('a');card.className='feed-card';card.href=safe(v.url);
       if(v.id){const img=document.createElement('img');img.src='https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg';img.alt='';img.loading='lazy';card.append(img)}
-      else{const art=document.createElement('div');art.className='feed-art';art.textContent=v.type==='Artifact'?'∑':'¶';art.setAttribute('aria-hidden','true');card.append(art)}
+      else{const art=document.createElement('div');art.className='feed-art';art.textContent=v.type==='Project'?'▥':v.type==='Blog'?'ŷ = wx + b':'∑';art.setAttribute('aria-hidden','true');card.append(art)}
       const meta=document.createElement('small');meta.textContent=v.type+' · '+v.date.slice(0,10);
       const title=document.createElement('strong');title.textContent=v.title;
-      card.append(meta,title);rail.append(card);
+      card.append(meta,title);
+      if(v.summary && (mode==='projects'||mode==='blogs')){const p=document.createElement('p');p.textContent=v.summary;card.append(p)}
+      rail.append(card);
     }
     if(!cards.length)rail.textContent='Published articles will appear here.';
   }

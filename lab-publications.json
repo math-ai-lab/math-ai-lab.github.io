@@ -11,8 +11,22 @@
     {
       "title": "What Does GPT Actually Learn?",
       "summary": "Dr. Hira Benish explores how models learn numerical transformations.",
-      "url": "blogs.html",
+      "url": "what-does-gpt-learn.html",
       "date": "2026-11-24"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Pakistan Air Quality Intelligence",
+      "summary": "Explore daily air pollution in Lahore and the challenge of predicting PM2.5.",
+      "url": "https://drhirabenish.github.io/projects/pakistan-air-quality-intelligence/",
+      "date": "2026-11-26"
+    },
+    {
+      "title": "Retail Sales Analysis",
+      "summary": "Explore retail sales data through a business analytics case study.",
+      "url": "https://drhirabenish.github.io/projects/retail-sales-analysis/",
+      "date": "2026-11-26"
     }
   ]
 }
