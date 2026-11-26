@@ -1,31 +1,49 @@
 <link rel="stylesheet" href="lab-grid.css">
+<link rel="stylesheet" href="course-cards.css">
 <article class="research-notes learning-catalog">
   <h1>Courses &amp; Learning</h1>
-  <p>Choose a course by subject and application. Open a practice activity to explore a mathematical idea here in the lab.</p>
-  <p aria-label="Course subjects"><a href="#discrete">Discrete Mathematics</a> &nbsp;·&nbsp; <a href="#multivariable">Multivariable Calculus</a> &nbsp;·&nbsp; <a href="#linear">Linear Algebra</a> &nbsp;·&nbsp; <a href="#python">Programming</a></p>
-  <section id="discrete">
-    <h2>Discrete Mathematics</h2>
-    <article><h3>Discrete Mathematics for AI</h3><p>Reason through rules, sets, relations, and partial orders using scenarios from intelligent systems.</p></article>
-    <article><h3>Discrete Structures</h3><p>Build a computing foundation in truth tables, proof, functions, and counting.</p></article>
-    <details><summary>Practice · Count the edges of a cycle</summary><!-- CYCLE --></details>
-    <p><a href="artifacts.html#incident">Try a graph investigation →</a></p>
+  <p>Choose a department to explore its courses.</p>
+  <nav aria-label="Course departments"><a href="#mathematics">Mathematics</a> · <a href="#computing">Computing, AI &amp; Data Science</a></nav>
+  <section id="mathematics"><h2>Department of Mathematics</h2>
+    <div class="department-courses">
+    <a class="course-card" href="https://pmaicourses.github.io/Discrete_Structures/">
+      <div class="course-thumb" style="--shade:#184559"><svg aria-hidden="true" viewBox="0 0 168 104" fill="none" stroke="#a9eee7" stroke-width="2.4"><path d="M83 20 125 47 108 83 58 83 41 47Z"/><circle cx="83" cy="20" r="4" fill="#ffdc9d"/><circle cx="125" cy="47" r="4" fill="#ffdc9d"/><circle cx="108" cy="83" r="4" fill="#ffdc9d"/><circle cx="58" cy="83" r="4" fill="#ffdc9d"/><circle cx="41" cy="47" r="4" fill="#ffdc9d"/></svg></div>
+      <h3>Discrete Structures</h3><p>Logic, sets, functions, and counting for computing.</p><span>Open course ↗</span>
+    </a>
+    <a class="course-card" href="https://pmaicourses.github.io/Multivariable_Calculus/">
+      <div class="course-thumb" style="--shade:#324c79"><svg aria-hidden="true" viewBox="0 0 168 104" fill="none" stroke="#a9eee7" stroke-width="1.2"><polyline points="84,30 81.5,28.26875 79,26.775 76.5,25.51875 74,24.5 71.5,23.71875 69,23.175 66.5,22.86875 64,22.8 61.5,22.96875 59,23.375 56.5,24.01875 54,24.900000000000002 51.5,26.01875 49,27.375 46.5,28.96875 44,30.8 41.5,32.86875 39,35.175 36.5,37.71875 34,40.5 31.5,43.51875 29,46.775 26.5,50.26875 24,54"/><polyline points="84,30 86.5,33.73125 89,37.225 91.5,40.48125 94,43.5 96.5,46.28125 99,48.825 101.5,51.13125 104,53.2 106.5,55.03125 109,56.625 111.5,57.98125 114,59.099999999999994 116.5,59.98125 119,60.625 121.5,61.03125 124,61.2 126.5,61.13125 129,60.825 131.5,60.28125 134,59.5 136.5,58.48125 139,57.225 141.5,55.73125 144,54"/><polyline points="94,43.5 91.5,41.76875 89,40.275 86.5,39.01875 84,38 81.5,37.21875 79,36.675 76.5,36.36875 74,36.3 71.5,36.46875 69,36.875 66.5,37.51875 64,38.4 61.5,39.51875 59,40.875 56.5,42.46875 54,44.3 51.5,46.36875 49,48.675 46.5,51.21875 44,54 41.5,57.01875 39,60.275 36.5,63.76875 34,67.5"/><polyline points="74,24.5 76.5,28.23125 79,31.725 81.5,34.98125 84,38 86.5,40.78125 89,43.325 91.5,45.63125 94,47.7 96.5,49.53125 99,51.125 101.5,52.48125 104,53.6 106.5,54.48125 109,55.125 111.5,55.53125 114,55.7 116.5,55.63125 119,55.325 121.5,54.78125 124,54 126.5,52.98125 129,51.725 131.5,50.23125 134,48.5"/><polyline points="104,53.2 101.5,51.46875 99,49.975 96.5,48.71875 94,47.7 91.5,46.91875 89,46.375 86.5,46.06875 84,46 81.5,46.16875 79,46.575 76.5,47.21875 74,48.1 71.5,49.21875 69,50.575 66.5,52.16875 64,54 61.5,56.06875 59,58.375 56.5,60.91875 54,63.7 51.5,66.71875 49,69.975 46.5,73.46875 44,77.2"/><polyline points="64,22.8 66.5,26.53125 69,30.025 71.5,33.28125 74,36.3 76.5,39.08125 79,41.625 81.5,43.93125 84,46 86.5,47.83125 89,49.425 91.5,50.78125 94,51.9 96.5,52.78125 99,53.425 101.5,53.83125 104,54 106.5,53.93125 109,53.625 111.5,53.08125 114,52.3 116.5,51.28125 119,50.025 121.5,48.53125 124,46.8"/><polyline points="114,59.099999999999994 111.5,57.36875 109,55.875 106.5,54.61875 104,53.6 101.5,52.81875 99,52.275 96.5,51.96875 94,51.9 91.5,52.06875 89,52.475 86.5,53.11875 84,54 81.5,55.11875 79,56.475 76.5,58.06875 74,59.9 71.5,61.96875 69,64.275 66.5,66.81875 64,69.6 61.5,72.61875 59,75.875 56.5,79.36875 54,83.1"/><polyline points="54,24.900000000000002 56.5,28.63125 59,32.125 61.5,35.38125 64,38.4 66.5,41.18125 69,43.725 71.5,46.03125 74,48.1 76.5,49.93125 79,51.525 81.5,52.88125 84,54 86.5,54.88125 89,55.525 91.5,55.93125 94,56.1 96.5,56.03125 99,55.725 101.5,55.18125 104,54.4 106.5,53.38125 109,52.125 111.5,50.63125 114,48.900000000000006"/><polyline points="124,61.2 121.5,59.46875 119,57.975 116.5,56.71875 114,55.7 111.5,54.91875 109,54.375 106.5,54.06875 104,54 101.5,54.16875 99,54.575 96.5,55.21875 94,56.1 91.5,57.21875 89,58.575 86.5,60.16875 84,62 81.5,64.06875 79,66.375 76.5,68.91875 74,71.7 71.5,74.71875 69,77.975 66.5,81.46875 64,85.2"/><polyline points="44,30.8 46.5,34.53125 49,38.025 51.5,41.28125 54,44.3 56.5,47.08125 59,49.625 61.5,51.93125 64,54 66.5,55.83125 69,57.425 71.5,58.78125 74,59.9 76.5,60.78125 79,61.425 81.5,61.83125 84,62 86.5,61.93125 89,61.625 91.5,61.08125 94,60.3 96.5,59.28125 99,58.025 101.5,56.53125 104,54.8"/><polyline points="134,59.5 131.5,57.76875 129,56.275 126.5,55.01875 124,54 121.5,53.21875 119,52.675 116.5,52.36875 114,52.3 111.5,52.46875 109,52.875 106.5,53.51875 104,54.4 101.5,55.51875 99,56.875 96.5,58.46875 94,60.3 91.5,62.36875 89,64.675 86.5,67.21875 84,70 81.5,73.01875 79,76.275 76.5,79.76875 74,83.5"/><polyline points="34,40.5 36.5,44.23125 39,47.725 41.5,50.98125 44,54 46.5,56.78125 49,59.325 51.5,61.63125 54,63.7 56.5,65.53125 59,67.125 61.5,68.48125 64,69.6 66.5,70.48125 69,71.125 71.5,71.53125 74,71.7 76.5,71.63125 79,71.325 81.5,70.78125 84,70 86.5,68.98125 89,67.725 91.5,66.23125 94,64.5"/><polyline points="144,54 141.5,52.26875 139,50.775 136.5,49.51875 134,48.5 131.5,47.71875 129,47.175 126.5,46.86875 124,46.8 121.5,46.96875 119,47.375 116.5,48.01875 114,48.900000000000006 111.5,50.01875 109,51.375 106.5,52.96875 104,54.8 101.5,56.86875 99,59.175 96.5,61.71875 94,64.5 91.5,67.51875 89,70.775 86.5,74.26875 84,78"/><polyline points="24,54 26.5,57.73125 29,61.225 31.5,64.48125 34,67.5 36.5,70.28125 39,72.825 41.5,75.13125 44,77.2 46.5,79.03125 49,80.625 51.5,81.98125 54,83.1 56.5,83.98125 59,84.625 61.5,85.03125 64,85.2 66.5,85.13125 69,84.825 71.5,84.28125 74,83.5 76.5,82.48125 79,81.225 81.5,79.73125 84,78"/></svg></div>
+      <h3>Multivariable Calculus</h3><p>Partial derivatives, integration, and the geometry of surfaces.</p><span>Open course ↗</span>
+    </a>
+    <a class="course-card" href="https://pmaicourses.github.io/Linear-Algebra/">
+      <div class="course-thumb" style="--shade:#513767"><svg aria-hidden="true" viewBox="0 0 168 104" fill="none" stroke="#a9eee7" stroke-width="2.4"><path d="M38 80 106 80 M38 80 70 23 M96 73 106 80 96 87 M59 28 70 23 70 35 M70 23 138 23 106 80" /></svg></div>
+      <h3>Linear Algebra</h3><p>Systems of equations, vector spaces, and linear transformations.</p><span>Open course ↗</span>
+    </a>
+    </div>
   </section>
-  <section id="multivariable">
-    <h2>Multivariable Calculus</h2>
-    <article><p>Explore partial derivatives, the chain rule, and integration through worked problems and computational examples.</p></article>
-
+  <section id="computing"><h2>Department of Computing, AI &amp; Data Science</h2>
+    <div class="department-courses">
+    <a class="course-card" href="https://pmaicourses.github.io/Discrete-Mathematics-for-AI/">
+      <div class="course-thumb" style="--shade:#483967"><svg aria-hidden="true" viewBox="0 0 168 104" fill="none" stroke="#a9eee7" stroke-width="2.4"><path d="M83 85 43 53 83 19 123 53Z"/><circle cx="83" cy="85" r="4" fill="#ffdc9d"/><circle cx="43" cy="53" r="4" fill="#ffdc9d"/><circle cx="83" cy="19" r="4" fill="#ffdc9d"/><circle cx="123" cy="53" r="4" fill="#ffdc9d"/></svg></div>
+      <h3>Discrete Mathematics for AI</h3><p>Rules, relations, and partial orders in intelligent systems.</p><span>Open course ↗</span>
+    </a>
+    <a class="course-card" href="https://pmaicourses.github.io/Linear_Algebra_For_ML/">
+      <div class="course-thumb" style="--shade:#144f59"><svg aria-hidden="true" viewBox="0 0 168 104" fill="none" stroke="#a9eee7" stroke-width="2.4"><path d="M32 83 138 21"/><circle cx="40" cy="68" r="4" fill="#ffdc9d"/><circle cx="58" cy="76" r="4" fill="#ffdc9d"/><circle cx="73" cy="49" r="4" fill="#ffdc9d"/><circle cx="93" cy="55" r="4" fill="#ffdc9d"/><circle cx="111" cy="31" r="4" fill="#ffdc9d"/><circle cx="130" cy="33" r="4" fill="#ffdc9d"/></svg></div>
+      <h3>Linear Algebra for Machine Learning</h3><p>Vector geometry, least squares, and model fitting.</p><span>Open course ↗</span>
+    </a>
+    <a class="course-card" href="https://pmaicourses.github.io/Linear-Algebra-for-Data-Science/">
+      <div class="course-thumb" style="--shade:#344579"><svg aria-hidden="true" viewBox="0 0 168 104" fill="none" stroke="#a9eee7" stroke-width="2.4"><rect x="42" y="22" width="11" height="12" fill="#a8eee6" opacity="0.2" stroke="none"/><rect x="56" y="22" width="11" height="12" fill="#a8eee6" opacity="0.7416666666666667" stroke="none"/><rect x="70" y="22" width="11" height="12" fill="#a8eee6" opacity="0.4916666666666667" stroke="none"/><rect x="84" y="22" width="11" height="12" fill="#a8eee6" opacity="0.24166666666666667" stroke="none"/><rect x="98" y="22" width="11" height="12" fill="#a8eee6" opacity="0.7833333333333334" stroke="none"/><rect x="112" y="22" width="11" height="12" fill="#a8eee6" opacity="0.5333333333333333" stroke="none"/><rect x="42" y="37" width="11" height="12" fill="#a8eee6" opacity="0.2833333333333333" stroke="none"/><rect x="56" y="37" width="11" height="12" fill="#a8eee6" opacity="0.825" stroke="none"/><rect x="70" y="37" width="11" height="12" fill="#a8eee6" opacity="0.575" stroke="none"/><rect x="84" y="37" width="11" height="12" fill="#a8eee6" opacity="0.325" stroke="none"/><rect x="98" y="37" width="11" height="12" fill="#a8eee6" opacity="0.8666666666666667" stroke="none"/><rect x="112" y="37" width="11" height="12" fill="#a8eee6" opacity="0.6166666666666667" stroke="none"/><rect x="42" y="52" width="11" height="12" fill="#a8eee6" opacity="0.3666666666666667" stroke="none"/><rect x="56" y="52" width="11" height="12" fill="#a8eee6" opacity="0.9083333333333334" stroke="none"/><rect x="70" y="52" width="11" height="12" fill="#a8eee6" opacity="0.6583333333333333" stroke="none"/><rect x="84" y="52" width="11" height="12" fill="#a8eee6" opacity="0.4083333333333333" stroke="none"/><rect x="98" y="52" width="11" height="12" fill="#a8eee6" opacity="0.95" stroke="none"/><rect x="112" y="52" width="11" height="12" fill="#a8eee6" opacity="0.7" stroke="none"/><rect x="42" y="67" width="11" height="12" fill="#a8eee6" opacity="0.45" stroke="none"/><rect x="56" y="67" width="11" height="12" fill="#a8eee6" opacity="0.2" stroke="none"/><rect x="70" y="67" width="11" height="12" fill="#a8eee6" opacity="0.7416666666666667" stroke="none"/><rect x="84" y="67" width="11" height="12" fill="#a8eee6" opacity="0.4916666666666667" stroke="none"/><rect x="98" y="67" width="11" height="12" fill="#a8eee6" opacity="0.24166666666666667" stroke="none"/><rect x="112" y="67" width="11" height="12" fill="#a8eee6" opacity="0.7833333333333334" stroke="none"/></svg></div>
+      <h3>Linear Algebra for Data Science</h3><p>Matrix representations, projections, and dimensionality reduction.</p><span>Open course ↗</span>
+    </a>
+    <a class="course-card" href="https://msohailakhtar.github.io/Python-Programming/">
+      <div class="course-thumb" style="--shade:#253c52"><svg aria-hidden="true" viewBox="0 0 168 104" fill="none" stroke="#a9eee7" stroke-width="2.4"><text x="22" y="45" fill="#9af0d9" stroke="none" font-family="monospace" font-size="14">x = [2, 3, 5]</text><text x="22" y="67" fill="#ffe0aa" stroke="none" font-family="monospace" font-size="14">sum(x) → 10</text></svg></div>
+      <h3>Python Programming</h3><p>Variables, data types, and computational problem solving.</p><span>Open course ↗</span>
+    </a>
+    </div>
   </section>
-  <section id="linear">
-    <h2>Linear Algebra</h2>
-    <article><p>Study systems of equations, basis, dimension, and transformations through theory and computation.</p></article>
-    <article><h3>Linear Algebra for Machine Learning</h3><p>Connect vector geometry and least squares to model fitting, dimensionality reduction, and neural networks.</p></article>
-    <article><h3>Linear Algebra for Data Science</h3><p>Use matrix representations, projections, and low-rank approximations to study data engineering and intelligent systems.</p></article>
+  <section><h2>Practice in the lab</h2>
+    <details><summary>Count the edges of a cycle</summary><!-- CYCLE --></details>
     <details><summary>Explore a matrix shear</summary><!-- SHEAR --></details>
     <details><summary>Rotate a unit vector</summary><!-- ROTATION --></details>
-  </section>
-  <section id="python">
-    <h2>Programming</h2>
-    <article><h3>Python Programming</h3><p>Start with variables and data types in Python for artificial intelligence.</p></article>
-
+    <p><a href="artifacts.html#incident">Try a graph investigation →</a></p>
   </section>
 </article>
