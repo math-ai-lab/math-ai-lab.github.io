@@ -120,3 +120,10 @@ main:has(.research-notes)::before {
 @media (prefers-reduced-motion: reduce) {
   main:has(.research-notes)::before { animation: none; }
 }
+
+/* Public engagement on the Collaborations page. */
+.collab-events { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr)); gap:1rem; }
+.collab-events article { padding:1.25rem; border-radius:12px; border:1px solid #bad9df; background:linear-gradient(135deg,#edf9f7,#fff); }
+.collab-events article:nth-child(even) { border-color:#d6cbe2; background:linear-gradient(135deg,#f4edf9,#fff); }
+.collab-events h3 { margin:.5rem 0; line-height:1.25; }
+.collab-events small { font-weight:650; }
