@@ -19,12 +19,17 @@
     const rail=host.querySelector('.feed-rail');rail.replaceChildren();
     for(const v of cards){
       const card=document.createElement('a');card.className='feed-card';card.href=safe(v.url);
-      if(v.id){const img=document.createElement('img');img.src='https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg';img.alt='';img.loading='lazy';card.append(img)}
+      if(v.thumbnail || v.id){const img=document.createElement('img');img.src=v.thumbnail || 'https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg';img.alt='';img.loading='lazy';card.append(img)}
       else{const art=document.createElement('div');art.className='feed-art';art.textContent=v.type==='Project'?'▥':v.type==='Blog'?'ŷ = wx + b':'∑';art.setAttribute('aria-hidden','true');card.append(art)}
-      const meta=document.createElement('small');meta.textContent=v.type+' · '+v.date.slice(0,10);
+      const meta=document.createElement('small');meta.textContent=mode==='projects' && v.topic ? v.topic : v.type+' · '+v.date.slice(0,10);
       const title=document.createElement('strong');title.textContent=v.title;
       card.append(meta,title);
       if(v.summary && (mode==='projects'||mode==='blogs')){const p=document.createElement('p');p.textContent=v.summary;card.append(p)}
+      if (mode === 'projects') {
+        const action = document.createElement('span');
+        action.textContent = 'Open case study ↗';
+        card.append(action);
+      }
       rail.append(card);
     }
     if(!cards.length)rail.textContent='Published articles will appear here.';

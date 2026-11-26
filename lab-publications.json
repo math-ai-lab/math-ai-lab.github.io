@@ -20,13 +20,17 @@
       "title": "Pakistan Air Quality Intelligence",
       "summary": "Explore daily air pollution in Lahore and the challenge of predicting PM2.5.",
       "url": "https://drhirabenish.github.io/projects/pakistan-air-quality-intelligence/",
-      "date": "2026-11-26"
+      "date": "2026-11-26",
+      "thumbnail": "assets/projects/lahore-forecast.svg",
+      "topic": "Environmental forecasting"
     },
     {
       "title": "Retail Sales Analysis",
       "summary": "Explore retail sales data through a business analytics case study.",
       "url": "https://drhirabenish.github.io/projects/retail-sales-analysis/",
-      "date": "2026-11-26"
+      "date": "2026-11-26",
+      "thumbnail": "assets/projects/daily-sales.svg",
+      "topic": "Business analytics"
     }
   ]
 }
