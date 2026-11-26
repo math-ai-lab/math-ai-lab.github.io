@@ -28,5 +28,28 @@ main:has(.art-page, .research-notes)::before {
 .research-notes details {padding: .8rem 1rem;background: #eaf4fa;}
 .research-notes summary {cursor: pointer;}
 
-.faculty-directory dt {margin-top: 1rem; padding-top: .8rem; border-top: 1px solid #d3dfe9;}
-.faculty-directory dd {margin: .25rem 0 0; line-height: 1.55;}
+.faculty-directory {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1rem;
+}
+.faculty-card {
+  padding: 1.2rem;
+  border: 1px solid #cadbe7;
+  border-top: 3px solid #437e91;
+  border-radius: 12px;
+  background: #fff;
+}
+.faculty-monogram {
+  display: inline-grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: #dceef1;
+  color: #193750;
+  font: 1.5rem Georgia, serif;
+}
+.faculty-card h3 { margin: .8rem 0 .3rem; letter-spacing: normal; }
+.faculty-card p { margin: .5rem 0 0; }
+.faculty-role { color: #28596a; font-weight: 600; }
