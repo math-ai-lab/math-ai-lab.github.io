@@ -62,26 +62,11 @@ page('research.html', 'Research', (root / 'research-content.html').read_text())
 for slug,(title,intro,heading,detail,url,label) in sections.items():
     page(slug+'.html',title.replace('&amp;','&'),f'<article class="inner"><h1>{title}</h1><p>{intro}</p>'+row('details',heading,f'<p>{detail}</p><a href="{url}">{label} →</a>')+'</article>')
 
-course_groups = {
-    'Mathematics': [
-        ('Multivariable Calculus', 'https://pmaicourses.github.io/Multivariable_Calculus/'),
-        ('Linear Algebra', 'https://pmaicourses.github.io/Linear-Algebra/'),
-        ('Discrete Mathematics (Discrete Structures)', 'https://pmaicourses.github.io/Discrete_Structures/')],
-    'Computing, AI &amp; Data Science': [
-        ('Python Programming', 'https://msohailakhtar.github.io/Python-Programming/'),
-        ('Linear Algebra for Machine Learning', 'https://pmaicourses.github.io/Linear_Algebra_For_ML/'),
-        ('Linear Algebra for Data Science', 'https://pmaicourses.github.io/Linear-Algebra-for-Data-Science/'),
-        ('Discrete Mathematics for AI', 'https://pmaicourses.github.io/Discrete-Mathematics-for-AI/')]}
-course_intro = """<style>
-.course-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,34%);align-items:center;gap:22px;padding:clamp(20px,4vw,42px);border-radius:16px;color:#f4f8ff;background:radial-gradient(ellipse at 82% 50%,#214566,#101f39 70%);margin:16px 0 30px}.course-head h1{margin:8px 0;color:#fff}.course-head p{margin:8px 0;max-width:45ch}.course-head a{color:#a7f1ef}.course-head figure{margin:0;text-align:center}.course-head svg{max-height:175px;width:100%}.course-head button{background:transparent;color:#bfe8f5;border:1px solid #7393aa;padding:4px 11px;font-size:12px}.course-list{padding:22px 0}.course-list ul{list-style:none;padding:0;margin:0}.course-list li+li{border-top:1px solid #d3ddeb}.course-list a{display:block;padding:10px 0;text-decoration:none}.course-list a:hover{text-decoration:underline}@media(max-width:600px){.course-head{grid-template-columns:1fr;gap:8px}.course-head svg{height:110px}.course-head figure{display:flex;align-items:center;justify-content:center}.course-head figure svg{max-width:185px}}
-</style><article class="inner" style="padding-top:15px"><header class="course-head"><div><h1>Courses</h1><p>Explore calculus, graph theory, and the linear algebra behind machine learning.</p><a href="#catalog">Browse the courses ↓</a></div><figure><svg id="course-cube" viewBox="-110 -100 220 200" role="img" aria-label="Rotating unit cube with eight vertices, twelve edges, and a violet diagonal vector"></svg><button hidden id="cube-motion" type="button">Pause rotation</button></figure></header><div id="catalog"></div>"""
-catalog = course_intro + scanner(True)
-for subject, entries in course_groups.items():
-    items = ''.join(f'<li><a href="{url}">{escape(title)} ↗</a></li>' for title,url in entries)
-    catalog += f'<section class="row course-list"><h2>{subject}</h2><ul>{items}</ul></section>'
-catalog += '<section><h2>Mathematics Behind AI</h2><p>Explore rotations, coordinates and graph-based reasoning.</p>'+learning()+'<a href="artifacts.html#incident">Try the sensor experiment</a> · <a href="blogs.html">Read What Does GPT Actually Learn?</a></section>'
-page('courses.html','Courses', catalog+(root/'cycle-practice.html').read_text()+'</article><script defer src="course-cube.js?v=solid"></script>')
-
+catalog = (root / 'learning-catalog.html').read_text()
+catalog = catalog.replace('<!-- CYCLE -->', (root / 'cycle-practice.html').read_text())
+catalog = catalog.replace('<!-- SHEAR -->', scanner(True))
+catalog = catalog.replace('<!-- ROTATION -->', learning())
+page('courses.html', 'Courses & Learning', catalog)
 
 page('youtube.html','YouTube','<article class="inner"><h1>Mathematics Behind AI</h1><p>Watch Dr. Hira Benish’s lessons and Shorts.</p><a href="https://www.youtube.com/@DrHiraBenish">Visit the YouTube channel ↗</a>'+feed('videos','Latest three uploads')+'</article>')
 page('blogs.html','What Does GPT Actually Learn?',(root/'reader.html').read_text())
