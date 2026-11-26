@@ -11,3 +11,31 @@
 .course-card span {margin-bottom:1rem;color:#185769;text-decoration:underline;}
 .course-card:hover,.course-card:focus-visible {outline:2px solid #327d86;outline-offset:2px;}
 .learning-catalog details + details {margin-top:.5rem;}
+
+/* Course illustrations animate briefly on arrival and replay on focus or hover. */
+.course-thumb svg {overflow: visible;}
+@media (prefers-reduced-motion: no-preference) {
+  .thumb-cycle circle, .thumb-order circle, .thumb-fit circle, .thumb-matrix rect {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: learning-pulse 1.4s ease-in-out 2;
+  }
+  .course-thumb svg :nth-child(3n) {animation-delay: .24s;}
+  .course-thumb svg :nth-child(3n + 1) {animation-delay: .48s;}
+  .thumb-surface polyline, .thumb-basis path {
+    stroke-dasharray: 350;
+    animation: learning-draw 2.3s ease-out both;
+  }
+  .thumb-code text:last-child {animation: learning-output 2s ease-in-out 2;}
+  .course-card:is(:hover, :focus-visible) svg {animation: learning-lift .75s ease-in-out;}
+}
+@keyframes learning-pulse {50% {transform: scale(1.22); opacity: .65;}}
+@keyframes learning-draw {from {stroke-dashoffset: 350;} to {stroke-dashoffset: 0;}}
+@keyframes learning-output {45% {opacity: .35;} 80% {opacity: 1;}}
+@keyframes learning-lift {50% {transform: translateY(-4px) scale(1.04);}}
+.learning-tools {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:1rem;align-items:stretch;}
+.learning-tools > .tool-tile {min-width:0;padding:1rem;border-radius:14px;background:#edf5fa;border:1px solid #bdcfde;}
+.learning-tools :is(.scanner,.sample,.rotation) {width:100%;max-width:none;box-sizing:border-box;margin:0;}
+.learning-tools svg {display:block;max-width:100%;max-height:10rem;margin:.5rem auto;}
+.learning-tools input[type=range] {width:100%;max-width:100%;}
+.learning-tools output {display:block;margin-top:.65rem;}
