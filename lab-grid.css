@@ -127,3 +127,8 @@ main:has(.research-notes)::before {
 .collab-events article:nth-child(even) { border-color:#d6cbe2; background:linear-gradient(135deg,#f4edf9,#fff); }
 .collab-events h3 { margin:.5rem 0; line-height:1.25; }
 .collab-events small { font-weight:650; }
+
+.collab-events .event-recording { display:block; color:inherit; text-decoration:none; }
+.event-recording img { display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:8px; margin-bottom:1rem; }
+.event-recording span { color:#24556e; text-decoration:underline; text-underline-offset:.2em; }
+.event-recording:focus-visible { outline:3px solid #24556e; outline-offset:5px; }
