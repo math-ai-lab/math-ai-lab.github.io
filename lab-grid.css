@@ -68,3 +68,27 @@ main:has(.art-page, .research-notes)::before {
   letter-spacing: normal;
 }
 .faculty-card .faculty-role {color: #28596a; font-weight: 600;}
+
+/* Collaborator cards animate only when the visitor allows motion. */
+@keyframes faculty-arrive {
+  from { opacity: .72; translate: 0 12px; }
+  to { opacity: 1; translate: 0 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .faculty-card {
+      animation: faculty-arrive linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 85%;
+    }
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .faculty-card {
+      transition: transform 180ms ease-out, box-shadow 180ms ease-out;
+    }
+    .faculty-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 18px #183a5414;
+    }
+  }
+}
