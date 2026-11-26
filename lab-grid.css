@@ -40,15 +40,14 @@ main:has(.art-page, .research-notes)::before {
   border-radius: 12px;
   background: #fff;
 }
-.faculty-monogram {
-  display: inline-grid;
-  place-items: center;
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
+.faculty-portrait {
+  display: block;
+  width: 116px;
+  height: 136px;
+  object-fit: cover;
+  object-position: center 25%;
+  border-radius: 10px;
   background: #dceef1;
-  color: #193750;
-  font: 1.5rem Georgia, serif;
 }
 .faculty-card h3 { margin: .8rem 0 .3rem; letter-spacing: normal; }
 .faculty-card p { margin: .5rem 0 0; }
