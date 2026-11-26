@@ -27,3 +27,6 @@ main:has(.art-page, .research-notes)::before {
 .research-notes small {color: #28596a;}
 .research-notes details {padding: .8rem 1rem;background: #eaf4fa;}
 .research-notes summary {cursor: pointer;}
+
+.faculty-directory dt {margin-top: 1rem; padding-top: .8rem; border-top: 1px solid #d3dfe9;}
+.faculty-directory dd {margin: .25rem 0 0; line-height: 1.55;}
