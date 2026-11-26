@@ -1,0 +1,42 @@
+/* Collaborations page palette and network motion */
+main:has(.collaborators) {
+  background: linear-gradient(120deg, #c7f1ec, #d7e6ff 48%, #e3d5ff 78%, #bce9ee);
+  background-size: 220% 160%;
+}
+main:has(.collaborators)::before {
+  background-image: linear-gradient(30deg, transparent 48%, #397ba323 49%, transparent 51%),
+                    linear-gradient(150deg, transparent 48%, #6174ae24 49%, transparent 51%);
+  background-size: 84px 48px;
+  animation: none;
+}
+.collab-heading {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  align-items: center;
+  gap: 1rem;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border-radius: 18px;
+  background: linear-gradient(110deg, #112d50, #284779 65%, #49387c);
+}
+.collab-heading h1, .collab-heading p { color: #fff; margin: 0; }
+.collab-heading p { margin-top: .5rem; }
+.collab-network { width: 100%; overflow: visible; }
+.network-lines, .network-signal { fill: none; stroke: #99bde3; stroke-width: 2; }
+.network-signal { stroke: #79ffdc; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 15 70; }
+.collab-network circle { fill: #9ff7eb; stroke: #20395a; stroke-width: 2; }
+.collaborators section { background: #f9fbffdd; }
+.collaborators .faculty-card { border-left: 5px solid #16796f; background: linear-gradient(100deg, #ddf5ef, #fff 65%); }
+.collaborators .faculty-card:nth-child(3n+2) { border-left-color: #515db2; background: linear-gradient(100deg, #e5e9ff, #fff 65%); }
+.collaborators .faculty-card:nth-child(3n) { border-left-color: #85579d; background: linear-gradient(100deg, #f2e5fb, #fff 65%); }
+@media (max-width: 580px) {
+  .collab-heading { grid-template-columns: 1fr; }
+  .collab-network { width: min(100%, 16rem); justify-self: end; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  main:has(.collaborators) { animation: collab-colors 9s ease-in-out infinite alternate; }
+  main:has(.collaborators)::before { animation: collab-mesh 10s linear infinite; }
+  .network-signal { animation: collab-travel 2.4s linear infinite; }
+}
+@keyframes collab-colors { to { background-position: 100% 65%; } }
+@keyframes collab-mesh { to { background-position: 84px 48px; } }
+@keyframes collab-travel { to { stroke-dashoffset: -85; } }
